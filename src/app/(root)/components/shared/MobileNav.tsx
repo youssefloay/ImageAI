@@ -1,12 +1,13 @@
 "use client"
 
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet'
 import { navLinks } from '../../../../../constants'
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from './ui/button'
+import { VisuallyHidden } from './ui/visually-hidden'
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -37,6 +38,11 @@ const MobileNav = () => {
               />
             </SheetTrigger>
             <SheetContent className="sheet-content sm:w-64">
+              {/* Visually hide the title but make it accessible for screen readers */}
+              <VisuallyHidden>
+                <SheetTitle>Menu</SheetTitle>
+              </VisuallyHidden>
+
               <Image 
                 src="/assets/images/logo-text.svg"
                 alt="Website logo text"
